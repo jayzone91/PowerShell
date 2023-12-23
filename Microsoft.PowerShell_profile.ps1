@@ -20,7 +20,7 @@ function which ($command) {
     Select-Object -ExpandProperty Path -ErrorAction SilentlyContinue
 }
 
-funcion Open ($param) {
+function Open ($param) {
   if ($param) {
     Invoke-Item $param
   }else{
@@ -48,6 +48,13 @@ Set-Alias -Name vim -Value nvim
 Import-Module -Name Terminal-Icons
 $Host.UI.RawUI.WindowTitle = "PS | $((Invoke-WebRequest wttr.in/kassel?format="%c%t" -UseBasicParsing).content)"
 
+
+################################################################################
+# Update Starship Env                                                          #
+################################################################################
+$ENV:STARSHIP_CONFIG = "$HOME\starship\starship.toml"
+
 # endregion
+
 
 Invoke-Expression (&starship init powershell)
