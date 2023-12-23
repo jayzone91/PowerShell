@@ -15,6 +15,19 @@ function .... {
 	Set-Location ../../..
 }
 
+function which ($command) {
+  Get-Command -Name $command -ErrorAction SilentlyContinue |
+    Select-Object -ExpandProperty Path -ErrorAction SilentlyContinue
+}
+
+funcion Open ($param) {
+  if ($param) {
+    Invoke-Item $param
+  }else{
+    Invoke-Item .
+  }
+}
+
 # endregion
 
 #region aliases
