@@ -52,7 +52,7 @@ Set-Alias -Name vim -Value nvim
 # Update the console title with current PowerShell elevation and version       #
 ################################################################################
 Import-Module -Name Terminal-Icons
-$Host.UI.RawUI.WindowTitle = "PS | $((Invoke-WebRequest wttr.in/kassel?format="%c%t" -UseBasicParsing).content)"
+# $Host.UI.RawUI.WindowTitle = "PowerS | $((Invoke-WebRequest wttr.in/kassel?format="%c%t" -UseBasicParsing).content)"
 
 
 ################################################################################
