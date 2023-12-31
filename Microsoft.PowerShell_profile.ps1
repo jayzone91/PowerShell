@@ -1,29 +1,35 @@
 # region Functions
 function sudo {
-	Start-Process @args -Verb RunAs -Wait
+  Start-Process @args -Verb RunAs -Wait
 }
 
 function .. {
-	Set-Location ..
+  Set-Location ..
 }
 
 function ... {
-	Set-Location ../..
+  Set-Location ../..
 }
 
 function .... {
-	Set-Location ../../..
+  Set-Location ../../..
+}
+
+function c {
+  Clear-Host
+  Get-ChildItemColorFormatWide
 }
 
 function which ($command) {
   Get-Command -Name $command -ErrorAction SilentlyContinue |
-    Select-Object -ExpandProperty Path -ErrorAction SilentlyContinue
+  Select-Object -ExpandProperty Path -ErrorAction SilentlyContinue
 }
 
 function Open ($param) {
   if ($param) {
     Invoke-Item $param
-  }else{
+  }
+  else {
     Invoke-Item .
   }
 }
