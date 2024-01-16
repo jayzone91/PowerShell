@@ -1,23 +1,12 @@
 # region Functions
-function sudo {
-  Start-Process @args -Verb RunAs -Wait
-}
 
 function .. {
   Set-Location ..
 }
 
-function ... {
-  Set-Location ../..
-}
-
-function .... {
-  Set-Location ../../..
-}
-
 function c {
   Clear-Host
-  Get-ChildItemColorFormatWide
+  pwd
 }
 
 function which ($command) {
@@ -34,33 +23,34 @@ function Open ($param) {
   }
 }
 
+function vim ($param) {
+  if ($param) {
+    nvim $param
+  }
+  else {
+    nvim .
+  }
+}
+
+function dir {
+  Get-ChildItem -Directory
+}
+function file {
+  Get-ChildItem -File
+}
+function hidden {
+  Get-ChildItem -Hidden
+}
+
 # endregion
 
 #region aliases
 ################################################################################
 # Set common aliases                                                           #
 ################################################################################
-Set-Alias -Name ll -Value Get-ChildItemColor -Scope Global -Option AllScope
-Set-Alias -Name ls -Value Get-ChildItemColorFormatWide -Scope Global -Option AllScope
-Set-Alias -Name History -Value Open-HistoryFile -Scope Global -Option AllScope
-Set-Alias -Name vim -Value nvim
-
-# endregion
-
-#region execution
-################################################################################
-# Update the console title with current PowerShell elevation and version       #
-################################################################################
-Import-Module -Name Terminal-Icons
-# $Host.UI.RawUI.WindowTitle = "PowerS | $((Invoke-WebRequest wttr.in/kassel?format="%c%t" -UseBasicParsing).content)"
-
-
-################################################################################
-# Update Starship Env                                                          #
-################################################################################
-$ENV:STARSHIP_CONFIG = "$HOME\starship\starship.toml"
-
+Set-Alias -Name ls -Value dir
+Set-Alias -Name ll -Value file
+Set-Alias -Name lla -Value hidden
 # endregion
 
 
-Invoke-Expression (&starship init powershell)
