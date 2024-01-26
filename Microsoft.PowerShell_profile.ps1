@@ -23,15 +23,6 @@ function Open ($param) {
   }
 }
 
-function vim ($param) {
-  if ($param) {
-    nvim $param
-  }
-  else {
-    nvim .
-  }
-}
-
 function dir {
   Get-ChildItem -Directory
 }
@@ -51,6 +42,8 @@ function hidden {
 Set-Alias -Name ls -Value dir
 Set-Alias -Name ll -Value file
 Set-Alias -Name lla -Value hidden
+Set-Alias -Name vim -Value nvim
+Set-Alias -Name vi -Value nvim
 # endregion
 
 
