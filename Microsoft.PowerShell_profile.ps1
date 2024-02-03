@@ -1,3 +1,6 @@
+## region Modules
+Import-Module -Name Terminal-Icons
+
 # region Functions
 
 function .. {
@@ -45,5 +48,4 @@ Set-Alias -Name lla -Value hidden
 Set-Alias -Name vim -Value nvim
 Set-Alias -Name vi -Value nvim
 # endregion
-
 
